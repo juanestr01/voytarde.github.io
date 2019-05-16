@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta property="og:title" content="Prueba">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+
+<div id="root" class="jumbotron">
+<h1>Bienvenido a VoyTarde</h1>
+<p>En esta App podrás saber cómo llegar rápido a clase: ¿Escaleras o Ascensor?</p>
+</div>
+
+<form>
+A qué piso vas?: <input type="text" name="Destino" value=""><br>
+Cuántas personas hay delante de ti?: <input type="text" name="Posicion" value=""><br>
+En qué piso va el ascensor?: <input type="text" name="Ascensor" value=""><br>
+<input type="button" value="Calcular" onclick="calcSum()">
+</form>
+
+Te rinde más en: <input type="text" name="res"><br>
+<script>
+    function calcSum() {
+        let Dest = document.getElementsByName("Destino")[0].value;
+        let Fila = document.getElementsByName("Posicion")[0].value;
+				let Asc = document.getElementsByName("Ascensor")[0].value;
+        var rta
+        if (Number(Dest)<3) {
+          rta = "Escalera";
+        } else if (Number(Dest)==4) {
+            if(Number(Fila)<3){
+              rta = "Ascensor"
+            } else{
+              rta = "Escalera"
+            }
+        } else if (Number(Dest)==5){
+            if(Number(Fila)<12){
+              rta = "Ascensor"
+            }else if (Number(Asc)<5){
+              rta = "Escaleras"
+            } else{
+              rta = "Ascensor"
+            }
+
+        }else if(Number(Dest)==6){
+            if(Number(Fila)>14 && Number(Asc)<4){
+              rta = "Escaleras"
+            }else{
+              rta="Ascensor"
+            }
+        }else {
+          rta= "Chequea tus datos";
+        }
+
+        //let rta = Number(num1) + Number(num2);
+        //let rta = 8
+        document.getElementsByName("res")[0].value = rta;
+    }
+</script>
+
+<div id="root" class="jumbotron">
+  <p>Recuerda que esta app funciona mejor en horas pico,</p>
+  <p> y si tienes una discapacidad el ascensor siempre será la mejor opción </p>
+</div>
+
+</body>
+</html>
